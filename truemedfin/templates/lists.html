@@ -1,0 +1,26 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Lists</title>
+</head>
+
+<body>
+
+    <h1>Lists</h1>
+
+    <ul>
+        {% for list in lists %}
+        <li>
+            <a href="/lists/{{ list.id }}">{{ list.name }}</a>
+        </li>
+        {% endfor %}
+    </ul>
+
+    <a href="/lists/create">Create new list</a>
+
+</body>
+
+</html>
