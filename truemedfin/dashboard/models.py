@@ -6,9 +6,10 @@ class Item(models.Model):
     package = models.IntegerField()
     number_of_pieces = models.IntegerField()
     def price(self):
-        if self.number_of_pieces == 0:  # Avoid division by zero
+        if self.number_of_pieces == 0 or self.package == 0:
             return 0
         return self.package / self.number_of_pieces
+
     def __str__(self):
         return self.name
     
@@ -17,7 +18,8 @@ class List(models.Model):
     items = models.ManyToManyField(Item)
 
     def list_price(self):
-        return sum([item.price for item in self.items.all()])
+        items = self.items.all()
+        return sum([item.price() for item in items])
     
     def __str__(self):
         return self.name

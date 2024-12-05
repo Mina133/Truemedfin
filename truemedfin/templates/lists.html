@@ -1,26 +1,18 @@
-<!DOCTYPE html>
-<html lang="en">
-
-<head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Lists</title>
-</head>
-
-<body>
-
-    <h1>Lists</h1>
-
-    <ul>
+{% extends "base.html" %} {% block title %}Lists Overview{% endblock %} {% block content %}
+<div class="container mt-5">
+    <h1 class="text-center mb-4">Lists Overview</h1>
+    <div class="row">
         {% for list in lists %}
-        <li>
-            <a href="/lists/{{ list.id }}">{{ list.name }}</a>
-        </li>
+        <div class="col-md-4">
+            <div class="card shadow-sm mb-4">
+                <div class="card-body text-center">
+                    <h5 class="card-title">{{ list.name }}</h5>
+                    <p class="card-text"><strong>Total Price:</strong> ${{ list.list_price|floatformat:2 }}</p>
+                    <a href="{% url 'list_detail' list.id %}" class="btn btn-primary">View Details</a>
+                </div>
+            </div>
+        </div>
         {% endfor %}
-    </ul>
-
-    <a href="/lists/create">Create new list</a>
-
-</body>
-
-</html>
+    </div>
+</div>
+{% endblock %}
