@@ -1,26 +1,22 @@
-<!DOCTYPE html>
-<html lang="en">
-
-<head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Items</title>
-</head>
-
-<body>
-
-    <h1>Items</h1>
-
-    <ul>
+{% extends "base.html" %} {% block title %}All Items{% endblock %} {% block content %}
+<div class="container mt-5">
+    <h1 class="text-center mb-4">All Items</h1>
+    <div class="row">
         {% for item in items %}
-        <li>
-            <a href="/items/{{ item.id }}">{{ item.name }}</a>
-        </li>
+        <div class="col-md-4">
+            <div class="card shadow-sm mb-4">
+                <div class="card-body text-center">
+                    <h5 class="card-title">{{ item.name }}</h5>
+                    <p><strong>Package:</strong> {{ item.package }}</p>
+                    <p><strong>Pieces:</strong> {{ item.number_of_pieces }}</p>
+                    <p><strong>Price:</strong> ${{ item.price|floatformat:2 }}</p>
+                </div>
+            </div>
+        </div>
         {% endfor %}
-    </ul>
-
-    <a href="/items/create">Create new item</a>
-
-</body>
-
-</html>
+    </div>
+    <div class="text-center mt-4">
+        <a href="{% url 'lists' %}" class="btn btn-secondary">Back to Lists</a>
+    </div>
+</div>
+{% endblock %}

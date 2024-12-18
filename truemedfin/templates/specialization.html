@@ -1,0 +1,28 @@
+{% extends "base.html" %} {% block content %}
+<div class="container mt-5">
+    <h1 class="mb-4">Specializations</h1>
+    {% if error %}
+    <div class="alert alert-danger">{{ error }}</div>
+    {% else %}
+    <!-- Display Global Hourly Rate -->
+    <div class="alert alert-info">
+        <strong>Global Hourly Rate:</strong> ${{ hourly_rate|floatformat:2 }}
+    </div>
+
+    <!-- Display Specializations -->
+    <div class="row">
+        {% for specialization in specializations %}
+        <div class="col-md-4">
+            <div class="card shadow-sm mb-4">
+                <div class="card-body text-center">
+                    <h5 class="card-title">{{ specialization.name }}</h5>
+                    <p><strong>Cost/Patient:</strong> ${{ specialization.cost_per_patient|floatformat:2 }}</p>
+                    <p><strong>Service Cost:</strong> ${{ specialization.service_cost|floatformat:2 }}</p>
+                </div>
+            </div>
+        </div>
+        {% endfor %}
+    </div>
+    {% endif %}
+</div>
+{% endblock %}

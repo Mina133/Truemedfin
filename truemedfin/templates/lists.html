@@ -1,4 +1,4 @@
-{% extends "base.html" %} {% block title %}Lists Overview{% endblock %} {% block content %}
+{% extends "base.html" %} {% block title %}Lists{% endblock %} {% block content %}
 <div class="container mt-5">
     <h1 class="text-center mb-4">Lists Overview</h1>
     <div class="row">
@@ -13,6 +13,16 @@
             </div>
         </div>
         {% endfor %}
+        <!-- All Items Card -->
+        <div class="col-md-4">
+            <div class="card shadow-sm mb-4">
+                <div class="card-body text-center">
+                    <h5 class="card-title">All Items</h5>
+                    <p class="card-text"><strong>Total Price:</strong> N/A</p>
+                    <a href="{% url 'all_items' %}" class="btn btn-secondary">View All Items</a>
+                </div>
+            </div>
+        </div>
     </div>
 </div>
 {% endblock %}
